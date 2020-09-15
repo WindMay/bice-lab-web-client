@@ -1,5 +1,17 @@
-<h2 mat-dialog-title>Detalle {{data.key | titlecase}}</h2>
+<h2 mat-dialog-title>Detalle {{dataDiag.key | titlecase}}</h2>
 <mat-dialog-content class="mat-typography">
+
+  <ng-container *ngIf="loading;else content">
+    <div class="spinner-wrapper">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-container>
+
+  <ng-template #content>
+    <div class="graph-container">
+      grafica
+    </div>
+  </ng-template>
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">

@@ -7,20 +7,29 @@
   </button>
 </mat-toolbar>
 
+<ng-container *ngIf="loading;else content">
+  <div class="spinner-wrapper">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-container>
 
-<div class="card-container">
-  <mat-card *ngFor="let item of data" class="example-card">
-    <mat-card-header>
-      <mat-card-title>{{item.key | titlecase }}</mat-card-title>
-      <mat-card-subtitle><span class="subtitle">{{item.name}}</span></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <span class="indicator">{{item.value}} ({{item.unit | titlecase}})</span>
-      <span class="date"> {{getDate(item.date) | date: 'longDate'}}</span>
 
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button mat-raised-button color="accent" (click)="openDialog(item)">Detalle</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<ng-template #content>
+  <div class="card-container">
+    <mat-card *ngFor="let item of data" class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{item.key | titlecase }}</mat-card-title>
+        <mat-card-subtitle><span class="subtitle">{{item.name}}</span></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <span class="indicator">{{item.value}} ({{item.unit | titlecase}})</span>
+        <span class="date"> {{getDate(item.date) | date: 'longDate'}}</span>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button mat-raised-button color="accent" (click)="openDialog(item)">Detalle</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-template>
+

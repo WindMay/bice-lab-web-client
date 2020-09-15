@@ -10,6 +10,7 @@ import {CommonModule} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MetricDetailComponent} from './metric-detail/metric-detail.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MetricDetailComponent} from './metric-detail/metric-detail.component';
     HttpClientModule,
     CommonModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [MetricDetailComponent],
   providers: [HttpClient]
