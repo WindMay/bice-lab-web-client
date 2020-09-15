@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         token: 'test-token',
         login: this.controlsAccessor.login.value
       }));
-      this.router.navigateByUrl('/protected');
+      this.router.navigateByUrl('/dashboard');
     }, 3000);
   }
 }

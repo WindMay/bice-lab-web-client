@@ -1,6 +1,6 @@
 import {ActionTypes, AUTH_INITIAL_STATE, AuthActions, AuthState} from './auth.actions';
 
-export function ShopReducer(state = AUTH_INITIAL_STATE, action: AuthActions): AuthState {
+export function AuthReducer(state = AUTH_INITIAL_STATE, action: AuthActions): AuthState {
   switch (action.type) {
     case ActionTypes.Login:
       return {

@@ -18,7 +18,7 @@ export class RouteGuard implements CanActivate {
         map((data: AuthState) => {
           // Validate token if any
           if (!data.token) {
-            this.router.navigate(['/']);
+            this.router.navigate(['/login']);
             return false;
           }
           // try login

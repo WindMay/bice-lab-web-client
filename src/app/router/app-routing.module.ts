@@ -6,7 +6,7 @@ import {RouteGuard} from './route-guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {
@@ -15,12 +15,13 @@ const routes: Routes = [
       import('../login/login.module').then((m) => m.LoginModule)
   },
   {
-    path: 'lost',
-    component: LostComponent
+    path: 'dashboard',
+    canActivate: [RouteGuard],
+    loadChildren: () =>
+      import('../dashboard/dashboard.module').then((m) => m.DashboardModule)
   },
   {
-    path: 'protected',
-    canActivate: [RouteGuard],
+    path: 'lost',
     component: LostComponent
   },
   {

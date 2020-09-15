@@ -1,6 +1,5 @@
 import {Action, createFeatureSelector} from '@ngrx/store';
 
-// Todo move to a model file auth.model.ts
 export interface AuthState {
   login: string | null;
   token: string | null;
