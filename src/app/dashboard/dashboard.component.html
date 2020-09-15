@@ -15,7 +15,7 @@
 
 
 <ng-template #content>
-  <div class="card-container">
+  <div *ngIf="!error else errorTemplate" class="card-container">
     <mat-card *ngFor="let item of data" class="example-card">
       <mat-card-header>
         <mat-card-title>{{item.key | titlecase }}</mat-card-title>
@@ -31,5 +31,16 @@
       </mat-card-actions>
     </mat-card>
   </div>
+
+  <ng-template #errorTemplate>
+    <div class="spinner-wrapper">
+      <div class="error-msg">
+        Api Error: Intentar otra ves?
+        <button mat-fab  color="warn" (click)="initialState()">
+          <mat-icon>sentiment_very_dissatisfied</mat-icon>
+        </button>
+      </div>
+    </div>
+  </ng-template>
 </ng-template>
 

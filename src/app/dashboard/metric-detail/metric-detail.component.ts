@@ -50,7 +50,6 @@ export class MetricDetailComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public dataDiag: any) { }
 
   ngOnInit(): void {
-    console.log('dialog data', this.dataDiag);
     if (this.dataDiag) {
       this.initialState();
     } else {
@@ -62,12 +61,10 @@ export class MetricDetailComponent implements OnInit {
     this.loading = true;
     this.httpClient.get(`https://www.indecon.online/values/${this.dataDiag.key}`).subscribe((resp: any) => {
       if (resp) {
-        console.log('resp diag', resp);
         this.data = resp;
         this.data = Object.keys(resp.values)
           .map( key =>
             ({x: new Date(parseInt(key, 10) * 1000), y: resp.values[key]}));
-        console.log('data', this.data);
       } else {
         this.error = true;
       }
