@@ -11,6 +11,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MetricDetailComponent} from './metric-detail/metric-detail.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     CommonModule,
     MatCardModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ChartsModule
+
   ],
   entryComponents: [MetricDetailComponent],
   providers: [HttpClient]

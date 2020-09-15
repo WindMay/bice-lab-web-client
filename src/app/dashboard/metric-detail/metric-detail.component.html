@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Detalle {{dataDiag.key | titlecase}}</h2>
+<h2 mat-dialog-title>{{dataDiag.key | titlecase}}</h2>
 <mat-dialog-content class="mat-typography">
 
   <ng-container *ngIf="loading;else content">
@@ -9,7 +9,7 @@
 
   <ng-template #content>
     <div class="graph-container">
-      grafica
+      <canvas baseChart [datasets]="[{ data: data, label: dataDiag.key.toUpperCase() + ' ' +dataDiag.unit }]" [options]="chartOptions" chartType="line"> </canvas>
     </div>
   </ng-template>
 

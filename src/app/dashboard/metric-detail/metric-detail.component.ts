@@ -12,6 +12,40 @@ export class MetricDetailComponent implements OnInit {
   loading: boolean;
   error: boolean;
 
+  // Chart Related
+  chartOptions = {
+    scales: {
+      xAxes: [
+        {
+          type: 'time',
+          time: {
+            unit: 'day',
+            displayFormats: {
+              day: 'MMM D',
+            },
+          },
+        },
+      ]
+    },
+    annotation: {
+      annotations: [
+        {
+          type: 'line',
+          mode: 'vertical',
+          scaleID: 'x-axis-0',
+          value: this.dataDiag.key,
+          borderColor: 'orange',
+          borderWidth: 2,
+          label: {
+            enabled: true,
+            fontColor: 'orange',
+            content: 'LineAnno'
+          }
+        },
+      ],
+    },
+  };
+
   constructor(public dialogRef: MatDialogRef<MetricDetailComponent>, private  httpClient: HttpClient,
               @Inject(MAT_DIALOG_DATA) public dataDiag: any) { }
 
@@ -30,7 +64,10 @@ export class MetricDetailComponent implements OnInit {
       if (resp) {
         console.log('resp diag', resp);
         this.data = resp;
-        this.data = Object.keys(resp).map( key =>  resp[key]);
+        this.data = Object.keys(resp.values)
+          .map( key =>
+            ({x: new Date(parseInt(key, 10) * 1000), y: resp.values[key]}));
+        console.log('data', this.data);
       } else {
         this.error = true;
       }
