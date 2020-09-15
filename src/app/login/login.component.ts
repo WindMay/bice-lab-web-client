@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {AuthState, Login} from '../store/auth/auth.actions';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +18,7 @@ export class LoginComponent implements OnInit {
     password: FormControl;
   };
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private store: Store<AuthState>, private router: Router) { }
 
   ngOnInit(): void {
     this.initialState();
@@ -41,6 +44,11 @@ export class LoginComponent implements OnInit {
     this.controlsAccessor.login.disable();
     setTimeout(() => {
       this.loading = false;
+      this.store.dispatch(new Login({
+        token: 'test-token',
+        login: this.controlsAccessor.login.value
+      }));
+      this.router.navigateByUrl('/protected');
     }, 3000);
   }
 }

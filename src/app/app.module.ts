@@ -9,6 +9,9 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {AppRoutingModule} from './router/app-routing.module';
 import {RouterSerializer} from './router/router.serializer';
 import {LostComponent} from './lost/lost.component';
+import {ShopReducer} from './store/auth/auth.reducer';
+import {EffectsModule} from '@ngrx/effects';
+import {AuthEffects} from './store/auth/auth.effects';
 
 @NgModule({
   declarations: [
@@ -20,16 +23,17 @@ import {LostComponent} from './lost/lost.component';
     BrowserAnimationsModule,
     StoreModule.forRoot({
       router: routerReducer,
+      auth: ShopReducer
     }),
     AppRoutingModule,
     StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
       logOnly: true, // Restrict extension to log-only mode
     }),
     // Connects RouterModule with StoreModule
     StoreRouterConnectingModule.forRoot({
       serializer: RouterSerializer,
-    })
+    }),
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {LostComponent} from '../lost/lost.component';
+import {RouteGuard} from './route-guard';
 
 const routes: Routes = [
   {
@@ -18,14 +19,17 @@ const routes: Routes = [
     component: LostComponent
   },
   {
+    path: 'protected',
+    canActivate: [RouteGuard],
+    component: LostComponent
+  },
+  {
     path: '**',
     redirectTo: 'lost'
   }
-
 ];
 
 @NgModule({
-  // useHash supports github.io demo page, remove in your app
   imports: [
     RouterModule.forRoot(routes, {
       useHash: true,
@@ -33,6 +37,7 @@ const routes: Routes = [
       preloadingStrategy: PreloadAllModules
     })
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [RouteGuard]
 })
 export class AppRoutingModule {}
