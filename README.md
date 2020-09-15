@@ -8,15 +8,15 @@ Libraries:
 - chart.Js
 - Angular/Material
 
-## Development server
+## Install and Run
 
-Run `ng serve` or `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-Tested Component `dashboard`
+Run `npm install` to install all project's assets.
 
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Run tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 
-
+Tested Component `dashboard`
